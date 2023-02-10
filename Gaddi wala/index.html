@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routing app</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+	</style>    
+</head>
+<body>
+    <div id="map" style="width:100%; height: 100vh"></div>
+
+    
+</body>
+</html>
+
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+
+<script>
+
+var map = L.map('map').setView([19.0748, 72.8856], 20);
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: 'osm' }).addTo(map);
+var taxiIcon = L.icon({
+			iconUrl: 'img/bus.png',
+			iconSize: [30,30]
+		})
+
+var marker = L.marker([19.0748, 72.8856 ], { icon: taxiIcon }).addTo(map);
+
+</script>

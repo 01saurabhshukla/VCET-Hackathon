@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>hi
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script> 
+    <script>
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyB_Cmz-54oxDsYZWAsXslzEP_fk1zmxilk",
+  authDomain: "bustravo-734e1.firebaseapp.com",
+  databaseURL: "https://bustravo-734e1-default-rtdb.firebaseio.com",
+  projectId: "bustravo-734e1",
+  storageBucket: "bustravo-734e1.appspot.com",
+  messagingSenderId: "956543744679",
+  appId: "1:956543744679:web:b41ff20de6c33c30117982",
+  measurementId: "G-ZGCLY5R7P2"
+};
+firebase.initializeApp(firebaseConfig);
+function getdata() {
+    var user=document.getElementById("user").value;
+    firebase.database().ref('drivers/'+user).once('value').then(function (snapshot) {
+        //here we will get data
+        //enter your field name
+        var latitude=snapshot.val().latitude;
+        var longitude=snapshot.val().longitude;
+        
+
+        //now we have data in variables
+        //now show them in our html
+
+        document.getElementById("latitude").innerHTML=latitude;
+        document.getElementById("longitude").innerHTML=longitude;
+       
+    })
+}
+
+
+    </script>
+    <script  src="scripty.js"></script>
+     <center>
+        <h2>Enter name of user to get information</h2>
+        <input type="text" id="user" required="required"><br>
+        <button type="button" onclick="getdata();">Get</button>
+    </center>
+    <center>
+        <p>Latitude: <strong id="latitude"></strong></p>
+        <p>Longitude:<strong id="longitude"></strong></p>
+        <a href="index.html"><button> Click me to see your bus </button></a>
+        <!-- <a href="scripty.js"><button> Click me ! </button></a> -->
+        
+        alert(Latitude);
+        
+    </center>
+</body>
+</html>
